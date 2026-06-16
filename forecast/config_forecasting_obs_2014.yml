@@ -91,10 +91,9 @@ norm_type: "LayerNorm"
 #####################################
 
 # streams_directory: "./config/streams/era5_1deg_forecasting/"
-# streams_directory: "./config/streams/era5_1deg_forecasting_split/"
 # streams_directory: "./config/streams/era5_georing_avhrr_synop_lowres/"
-# streams_directory: "./weathergen-configs/streams/era5_split_lowres/"
-streams_directory: "./weathergen-configs/streams/era5_1deg_forecasting_split/"
+# streams_directory: "./weathergen-configs/streams/era5_1deg_forecasting/"
+streams_directory: "./weathergen-configs/streams/era5_georing_avhrr_synop_lowres/"
 streams: ???
 
 # type of zarr_store
@@ -129,7 +128,7 @@ train_logging:
 # parameters for data loading
 data_loading :
 
-  num_workers: 12
+  num_workers: 8
   rng_seed: ???
   repeat_data_in_mini_epoch : False
 
@@ -144,7 +143,7 @@ training_config:
   samples_per_mini_epoch: 4096
   shuffle: True
 
-  start_date: 1979-01-01T00:00
+  start_date: 2014-01-01T00:00
   end_date: 2022-12-31T00:00
 
   time_window_step: 06:00:00
