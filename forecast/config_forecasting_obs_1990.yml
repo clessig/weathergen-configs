@@ -132,6 +132,8 @@ data_loading :
   rng_seed: ???
   repeat_data_in_mini_epoch : False
 
+  memory_pinning: True
+
 
 # config for training
 training_config:

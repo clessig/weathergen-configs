@@ -130,6 +130,7 @@ data_loading :
   num_workers: 12
   rng_seed: ???
   repeat_data_in_mini_epoch : False
+  memory_pinning: True
 
 
 # config for training
