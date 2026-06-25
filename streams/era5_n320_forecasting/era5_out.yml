@@ -19,6 +19,7 @@ ERA5 :
   token_size : 512 # 8
   tokenize_spacetime : False
   max_num_targets: 542080
+  # max_num_targets: 24576
   diagnostic: True
   # frequencency : 06:00:00
   embed : 

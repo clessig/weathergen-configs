@@ -19,6 +19,7 @@ ERA5_in :
   loss_weight : 1.
   location_weight : cosine_latitude
   token_size : 32
+  # token_size : 20
   tokenize_spacetime : True
   forcing: True
   frequency : 06:00:00
@@ -27,7 +28,7 @@ ERA5_in :
     "6" : 11
     "12" : 17
     "18" : 23
-  embed : 
+  embed :
     net : transformer
     num_tokens : 1
     num_heads : 8
