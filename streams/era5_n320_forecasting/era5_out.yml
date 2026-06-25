@@ -9,7 +9,6 @@
 
 ERA5 :
   type : anemoi
-  # filenames : ['aifs-ea-an-oper-0001-mars-o96-1979-2024-1h-v3-with-era51.zarr']
   filenames : ['aifs-ea-an-oper-0001-mars-n320-1979-2023-1h-v1-with-ERA51.zarr']
   stream_id : 1
   source : [ ]
@@ -19,9 +18,9 @@ ERA5 :
   location_weight : cosine_latitude
   token_size : 512 # 8
   tokenize_spacetime : False
-  max_num_targets: 542080 #262144 #131072 # -1
+  max_num_targets: 542080
   diagnostic: True
-  frequencency : 06:00:00
+  # frequencency : 06:00:00
   embed : 
     net : transformer
     num_tokens : 1
