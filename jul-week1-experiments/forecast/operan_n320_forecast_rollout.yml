@@ -10,7 +10,7 @@
 freeze_modules: ".*encoder.*|.*q_cells.*|.*latent.*|.*ERA5.*"
 # freeze_modules: ""
 
-streams_directory: "./weathergen-configs/streams/operan_o96_geos_o256_avhrr_iasipc/"
+streams_directory: "./weathergen-configs/streams/operan_n320_geos_h512_avhrr_iasipc/"
 
 general:
 
