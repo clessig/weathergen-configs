@@ -20,7 +20,7 @@ AVHRR :
   token_size : 256
   forcing: True
   embed : 
-    net : transformer
+    net : linear
     num_tokens : 1
     num_heads : 2
     dim_embed : 256
@@ -48,7 +48,7 @@ METOP_IASI_PC :
   token_size : 256
   forcing: True
   embed : 
-    net : transformer
+    net : linear
     num_tokens : 1
     num_heads : 2
     dim_embed : 256

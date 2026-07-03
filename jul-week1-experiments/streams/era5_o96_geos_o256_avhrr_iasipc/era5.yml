@@ -32,7 +32,7 @@ ERA5_in :
     "12" : 17
     "18" : 23
   embed : 
-    net : transformer
+    net : linear
     num_tokens : 1
     num_heads : 8
     dim_embed : 512

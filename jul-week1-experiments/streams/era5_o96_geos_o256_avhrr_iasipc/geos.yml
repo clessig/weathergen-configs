@@ -24,7 +24,7 @@ METEOSAT_SEVIRI_IR :
   max_num_targets: 131072
   forcing: True
   embed : 
-    net : transformer
+    net : linear
     num_tokens : 1
     num_heads : 4
     dim_embed : 512
@@ -57,7 +57,7 @@ GOES_ABI_IR :
   max_num_targets: 131072
   forcing: True
   embed : 
-    net : transformer
+    net : linear
     num_tokens : 1
     num_heads : 4
     dim_embed : 512
@@ -90,7 +90,7 @@ HIMAWARI_AHI_IR :
   max_num_targets: 131072
   forcing: True
   embed : 
-    net : transformer
+    net : linear
     num_tokens : 1
     num_heads : 4
     dim_embed : 512
@@ -124,7 +124,7 @@ GOES_ABI_VIS :
   max_num_targets: 131072
   forcing: True
   embed : 
-    net : transformer
+    net : linear
     num_tokens : 1
     num_heads : 4
     dim_embed : 512
@@ -158,7 +158,7 @@ HIMAWARI_AHI_VIS :
   max_num_targets: 131072
   forcing: True
   embed :
-    net : transformer
+    net : linear
     num_tokens : 1
     num_heads : 4
     dim_embed : 512

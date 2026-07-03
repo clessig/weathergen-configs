@@ -21,7 +21,7 @@ ERA5 :
   max_num_targets: -1 # 131072
   diagnostic: True
   embed : 
-    net : transformer
+    net : linear
     num_tokens : 1
     num_heads : 4
     dim_embed : 256
