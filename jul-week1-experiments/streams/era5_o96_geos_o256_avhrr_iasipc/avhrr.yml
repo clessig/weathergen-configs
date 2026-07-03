@@ -61,7 +61,7 @@ METOP_IASI_PC :
   type : obs
   stream_id : 21
   filenames : ['observations-od-ai-0001-2011-2023-iasi-pc-bufr-v1.zarr']
-  geoinfo_channels : ['cos_local_time', 'sin_local_time', 'cos_julian_day', 'sin_julian_day']
+  geoinfo_channels : ['cos_local_time', 'sin_local_time', 'cos_julian_day', 'sin_julian_day', 'cos_sza', 'cos_latitude', 'sin_latitude', 'cos_longitude', 'sin_longitude']
   loss_weight : 1.0
   token_size : 128
   forcing: True
