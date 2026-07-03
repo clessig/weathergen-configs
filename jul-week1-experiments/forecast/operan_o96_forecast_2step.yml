@@ -12,21 +12,11 @@ freeze_modules: ""
 streams_directory: "./weathergen-configs/streams/operan_o96_geos_o256_avhrr_iasipc/"
 
 general:
-
   # mutable parameters
   istep: 0
 
-# parameters for data loading
-data_loading :
-
-  num_workers: 12
-  rng_seed: ???
-  repeat_data_in_mini_epoch : False
-
 # config for training
 training_config:
-  
-  training_mode: ["masking"]
 
   num_mini_epochs: 1
   samples_per_mini_epoch: 8192
@@ -36,7 +26,7 @@ training_config:
   
   learning_rate_scheduling :
     lr_start: 1e-6
-    lr_max: 5e-5
+    lr_max: 4e-5
     lr_final_decay: 2e-6
     lr_final: 0.0
     num_steps_warmup: 256
@@ -46,58 +36,3 @@ training_config:
     policy_cooldown: "linear"
     parallel_scaling_policy: "sqrt"
 
-  optimizer:
-    grad_clip: 1.0
-    weight_decay: 0.1
-    log_grad_norms: False
-    adamw :
-      # parameters are scaled by number of DDP workers
-      beta1 : 0.98125 # == 0.85 on 2 nodes x 4 gpus
-      beta2 : 0.9875  # == 0.90 on 2 nodes x 4 gpus
-      eps : 2e-08
-
-  model_input: {
-    "source_masking" : {
-      # masking strategy: "random", "healpix", "forecast"
-      masking_strategy: "forecast",
-      },
-    }
-
-  forecast :
-      time_step: 06:00:00
-      offset: 1
-      num_steps: 2
-      policy: "fixed"
-
-
-validation_config: 
-
-  samples_per_mini_epoch: 256
-
-  start_date: 2023-10-01T00:00
-  end_date: 2023-12-31T00:00
-
-  time_window_step: 06:00:00
-  time_window_len: 06:00:00
-
-
-test_config: 
-
-  samples_per_mini_epoch: 4096
-  shuffle: False
-
-  start_date: 2023-06-01T00:00
-  end_date: 2023-08-31T00:00
-
-  time_window_step: 06:00:00
-  time_window_len: 06:00:00
-
-  # parameters for validation samples that are written to disk
-  output : {
-    # number of samples that are written
-    num_samples: 4096,
-    # write samples in normalized model space
-    normalized_samples: False,
-    # output streams to write; default all
-    streams: null,
-    }
