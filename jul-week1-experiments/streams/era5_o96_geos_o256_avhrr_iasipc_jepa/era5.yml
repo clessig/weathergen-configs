@@ -18,7 +18,6 @@ ERA5_in :
   location_weight : cosine_latitude
   token_size : 8 
   tokenize_spacetime : False
-  forcing: True
   frequency : 06:00:00
   nominal_time_mapping :
     "0" : 5

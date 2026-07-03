@@ -15,7 +15,6 @@ METEOSAT_SEVIRI_IR :
   loss_weight : 1.0
   token_size : 1024
   tokenize_spacetime : False
-  forcing: True
   embed : 
     net : linear
   # unused below
@@ -38,7 +37,6 @@ GOES_ABI_IR :
   loss_weight : 1.0
   token_size : 1024
   tokenize_spacetime : False
-  forcing: True
   embed : 
     net : linear
   embed_target_coords : 
@@ -60,7 +58,6 @@ HIMAWARI_AHI_IR :
   loss_weight : 1.0
   token_size : 1024
   tokenize_spacetime : False
-  forcing: True
   embed : 
     net : linear
   embed_target_coords : 
@@ -82,7 +79,6 @@ GOES_ABI_VIS :
   loss_weight : 1.0
   token_size : 1024
   tokenize_spacetime : False
-  forcing: True
   embed : 
     net : linear
   embed_target_coords : 
@@ -104,7 +100,6 @@ HIMAWARI_AHI_VIS :
   loss_weight : 1.0
   token_size : 1024
   tokenize_spacetime : False
-  forcing: True
   embed :
     net : linear
   embed_target_coords : 
