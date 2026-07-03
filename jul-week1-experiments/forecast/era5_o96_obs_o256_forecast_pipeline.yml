@@ -3,8 +3,7 @@ parallelize: false
 stages:
   - name: frcsttrain
     stage: train
-    config_files:
-      - ./config/era5_o96_obs_o256_forecast.yml
+    base_config: ./config/era5_o96_obs_o256_forecast.yml
     chain_jobs: 6
     nodes: 2
 
