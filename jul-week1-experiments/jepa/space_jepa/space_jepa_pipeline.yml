@@ -1,0 +1,36 @@
+parallelize: false
+
+stages:
+  - name: multipretrain
+    stage: train
+    config_files:
+      - ./config/space_jepa_pretraining_1979_2016.yml
+    chain_jobs: 4
+    nodes: 2
+
+  - name: mltiprtrnft
+    stage: train
+    from_run_id: STAGE.multipretrain
+    config_files:
+      - ./config/space_jepa_pretraining_1979_2016.yml
+      - ./config/space_jepa_pretraining_2016_2022.yml
+    chain_jobs: 3
+    nodes: 2
+
+  # Stage 3: Forecasting finetuning (freezes encoder)
+  - name: frcstft
+    stage: train
+    from_run_id: STAGE.multipretrain
+    config_files:
+      - ./config/space_jepa_forecast_era5_o96.yml
+    chain_jobs: 4
+    nodes: 2
+
+  # Stage 3: Forecasting finetuning (freezes encoder)
+  - name: operfrcstft
+    stage: train
+    from_run_id: STAGE.frcstft
+    config_files:
+      - ./config/operan_o96_forecast_rollout.yml
+    chain_jobs: 3
+    nodes: 2

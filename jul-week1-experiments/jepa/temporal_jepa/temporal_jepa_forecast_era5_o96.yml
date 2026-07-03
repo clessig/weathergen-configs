@@ -37,7 +37,7 @@ latent_noise_saturate_encodings: 5
 latent_noise_use_additive_noise: False
 latent_noise_deterministic_latents: True
 
-freeze_modules: ""
+freeze_modules: ".*encoder.*|.*latent_pre_norm.*|.*latent_heads.*"
 
 norm_type: "LayerNorm"
 
@@ -110,11 +110,11 @@ training_config:
     enabled: false
 
 
-  num_mini_epochs: 24
-  samples_per_mini_epoch: 8192
+  num_mini_epochs: 48
+  samples_per_mini_epoch: 4096
   shuffle: True
 
-  start_date: 1980-01-01T00:00
+  start_date: 1979-01-01T00:00
   end_date: 2022-12-31T00:00
 
   time_window_step: 06:00:00

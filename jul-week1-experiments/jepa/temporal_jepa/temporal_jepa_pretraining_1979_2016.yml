@@ -192,8 +192,8 @@ training_config:
   context_loss:
     enabled: false
 
-  num_mini_epochs: 96
-  samples_per_mini_epoch: 8192
+  num_mini_epochs: 64
+  samples_per_mini_epoch: 4096
   shuffle: True
 
   start_date: 1979-01-01T00:00
