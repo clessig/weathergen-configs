@@ -13,5 +13,5 @@ stages:
     from_run_id: STAGE.frcsttrain
     config_files:
       - ./config/operan_o96_forecast_rollout.yml
-    chain_jobs: 1
+    chain_jobs: 2
     nodes: 2

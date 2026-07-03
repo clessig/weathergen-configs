@@ -220,6 +220,24 @@ validation_config:
   # run validation before training starts (mainly for model development)
   validate_before_training: False
 
+# test config; full test config is merge of validation and test config
+test_config: 
+
+  samples_per_mini_epoch: 128
+  shuffle: False
+
+  start_date: 2023-06-01T00:00
+  end_date: 2023-08-31T00:00
+
+  # parameters for validation samples that are written to disk
+  output : {
+    # number of samples that are written
+    num_samples: 128,
+    # write samples in normalized model space
+    normalized_samples: False,
+    # output streams to write; default all
+    streams: null,
+    }
 
 # test config; full test config is merge of validation and test config
 # test config is used by default when running inference

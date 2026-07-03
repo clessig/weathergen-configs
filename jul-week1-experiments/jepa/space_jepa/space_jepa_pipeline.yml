@@ -20,7 +20,7 @@ stages:
   # Stage 3: Forecasting finetuning (freezes encoder)
   - name: frcstft
     stage: train
-    from_run_id: STAGE.multipretrain
+    from_run_id: STAGE.mltiprtrnft
     config_files:
       - ./config/space_jepa_forecast_era5_o96.yml
     chain_jobs: 4
