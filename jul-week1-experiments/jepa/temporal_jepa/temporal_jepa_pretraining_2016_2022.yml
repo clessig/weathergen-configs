@@ -163,8 +163,8 @@ training_config:
   context_loss:
     enabled: false
 
-  num_mini_epochs: 32
-  samples_per_mini_epoch: 4096
+  num_mini_epochs: 8
+  samples_per_mini_epoch: 8192
   shuffle: True
 
   start_date: 2016-01-01T00:00
