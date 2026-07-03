@@ -1,4 +1,4 @@
-# (C) Copyright 2024 WeatherGenerator contributors.
+# (C) Copyright 2026 WeatherGenerator contributors.
 #
 # This software is licensed under the terms of the Apache Licence Version 2.0
 # which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
@@ -16,7 +16,7 @@ ERA5_in :
   geoinfo_channels : ['z', 'lsm', 'slor', 'sdor', 'insolation', 'cos_local_time', 'sin_local_time', 'cos_julian_day', 'sin_julian_day']
   loss_weight : 1.
   location_weight : cosine_latitude
-  token_size : 8 # 512
+  token_size : 8 
   tokenize_spacetime : False
   forcing: True
   frequency : 06:00:00
@@ -27,6 +27,7 @@ ERA5_in :
     "18" : 23
   embed : 
     net : linear
+  # unused
   embed_target_coords :
     net : linear
     dim_embed : 256
