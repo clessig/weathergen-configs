@@ -54,11 +54,11 @@ num_class_tokens: 0
 num_register_tokens: 64
 
 # noise before predictor in JEPA
-noise_pre_predictor_std: 1e-3
+noise_pre_predictor_std: 1e-4
 
 # number of steps offset applied to first target window; if set to zero and forecast_steps=0 then
 # one is training an auto-encoder
-fe_num_blocks: 6
+fe_num_blocks: 0
 fe_num_heads: 16
 fe_dropout_rate: 0.1
 fe_with_qk_lnorm: True
@@ -101,7 +101,7 @@ zarr_store: "zip" # "zarr" for LocalStore, "zip" for ZipStore
 
 #####################################
 
-streams_directory: "./config/streams/era5_o96_geos_o256_avhrr_iasipc/"
+streams_directory: "./config/streams/era5_o96_geos_o256_avhrr_iasipc_jepa/"
 streams: ???
 
 general:
@@ -181,7 +181,7 @@ training_config:
     lr_final_decay: 1e-6
     lr_final: 0.0
     num_steps_warmup: 1024
-    num_steps_cooldown: 16384
+    num_steps_cooldown: 1024
     policy_warmup: "cosine"
     policy_decay: "constant"
     policy_cooldown: "linear"
