@@ -41,18 +41,12 @@ AVHRR :
   filenames : ['observations-file-2001-2023-eumetsat-avhrr-o256-v4.zarr']
   geoinfo_channels : ['cos_local_time', 'sin_local_time', 'cos_julian_day', 'sin_julian_day']
   loss_weight : 1.0
-  masking_override :
-    model_input :
-      masking_strategy_config :
-        rate: 1.0
   token_size : 256
   forcing: True
+  tokenize_spacetime: False
   embed : 
     net : linear
-    num_tokens : 1
-    num_heads : 2
-    dim_embed : 256
-    num_blocks : 2
+  # below unused 
   embed_target_coords : 
     net : linear
     dim_embed : 256
@@ -69,18 +63,12 @@ METOP_IASI_PC :
   filenames : ['observations-od-ai-0001-2011-2023-iasi-pc-bufr-v1.zarr']
   geoinfo_channels : ['cos_local_time', 'sin_local_time', 'cos_julian_day', 'sin_julian_day']
   loss_weight : 1.0
-  masking_override :
-    model_input :
-      masking_strategy_config :
-        rate: 1.0
-  token_size : 256
+  token_size : 128
   forcing: True
+  tokenize_spacetime: False
   embed : 
     net : linear
-    num_tokens : 1
-    num_heads : 2
-    dim_embed : 256
-    num_blocks : 2
+  # unused below
   embed_target_coords : 
     net : linear
     dim_embed : 256
