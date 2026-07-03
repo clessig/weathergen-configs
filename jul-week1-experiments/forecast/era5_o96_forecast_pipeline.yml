@@ -4,14 +4,27 @@ stages:
   - name: frcsttrain
     stage: train
     config_files:
-      - ./config/era5_o96_forecast.yml
+      - ./config/era5_o96_obs_o256_forecast.yml
     chain_jobs: 4
     nodes: 2
 
-  - name: operfrcsttrain
+  - name: operfrcst2step
     stage: train
     from_run_id: STAGE.frcsttrain
     config_files:
-      - ./config/operan_o96_forecast_rollout.yml
+      - ./config/operan_o96_obs_o256_forecast_2step.yml
+    chain_jobs: 1
+    nodes: 2
+
+  - name: operfrcst8step
+    stage: train
+    from_run_id: STAGE.operfrcst2step
+    config_files:
+      - ./config/operan_o96_obs_o256_forecast_8step.yml
     chain_jobs: 2
+    nodes: 2
+
+  - name: operfrcstinf
+    stage: inference
+    from_run_id: STAGE.operfrcst8step
     nodes: 2
