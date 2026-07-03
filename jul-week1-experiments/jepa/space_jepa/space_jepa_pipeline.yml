@@ -3,8 +3,7 @@ parallelize: false
 stages:
   - name: multipretrain
     stage: train
-    config_files:
-      - ./config/space_jepa_and_reconstruction_pretraining_1979_2015.yml
+    base_config: ./config/space_jepa_and_reconstruction_pretraining_1979_2015.yml
     chain_jobs: 4
     nodes: 2
 
