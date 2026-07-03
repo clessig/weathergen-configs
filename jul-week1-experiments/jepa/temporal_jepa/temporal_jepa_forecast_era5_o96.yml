@@ -110,8 +110,8 @@ training_config:
     enabled: false
 
 
-  num_mini_epochs: 48
-  samples_per_mini_epoch: 4096
+  num_mini_epochs: 32
+  samples_per_mini_epoch: 8192
   shuffle: True
 
   start_date: 1979-01-01T00:00
@@ -126,7 +126,7 @@ training_config:
     lr_final_decay: 2e-6
     lr_final: 0.0
     num_steps_warmup: 256
-    num_steps_cooldown: 512
+    num_steps_cooldown: 3584
     policy_warmup: "cosine"
     policy_decay: "constant"
     policy_cooldown: "linear"
@@ -138,8 +138,8 @@ training_config:
     log_grad_norms: False
     adamw :
       # parameters are scaled by number of DDP workers
-      beta1 : 0.9875 # at B=8 beta1 =0.9
-      beta2 : 0.994 # at B=8 beta1 approx 0.95
+      beta1 : 0.9875 # == 0.9 on 2 nodes x 4 gpus
+      beta2 : 0.99875  # == 0.99 on 2 nodes x 4 gpus
       eps : 1e-08
 
   losses : {

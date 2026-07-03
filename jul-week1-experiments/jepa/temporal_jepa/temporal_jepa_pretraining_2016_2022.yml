@@ -193,7 +193,7 @@ training_config:
     adamw :
       # parameters are scaled by number of DDP workers
       beta1 : 0.9875 # at B=8 beta1 =0.9
-      beta2 : 0.994 # at B=8 beta1 approx 0.95
+      beta2 : 0.99875 # at B=8 beta1 approx 0.99
       eps : 2e-08
 
   losses : {

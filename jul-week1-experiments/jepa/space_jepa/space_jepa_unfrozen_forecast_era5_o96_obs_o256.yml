@@ -124,20 +124,20 @@ training_config:
     lr_final_decay: 2e-6
     lr_final: 0.0
     num_steps_warmup: 256
-    num_steps_cooldown: 512
+    num_steps_cooldown: 3584
     policy_warmup: "cosine"
     policy_decay: "constant"
     policy_cooldown: "linear"
     parallel_scaling_policy: "sqrt"
 
   optimizer:
-    grad_clip: 0.25
+    grad_clip: 1.0
     weight_decay: 0.1
     log_grad_norms: False
     adamw :
       # parameters are scaled by number of DDP workers
-      beta1 : 0.9875 # at B=8 beta1 =0.9
-      beta2 : 0.994 # at B=8 beta1 approx 0.95
+      beta1 : 0.9875 # == 0.9 on 2 nodes x 4 gpus
+      beta2 : 0.99875  # == 0.99 on 2 nodes x 4 gpus
       eps : 1e-08
 
   losses : {
