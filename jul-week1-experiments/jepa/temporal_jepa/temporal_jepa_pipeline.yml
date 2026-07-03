@@ -4,7 +4,7 @@ stages:
   - name: multipretrain
     stage: train
     config_files:
-      - ./config/temporal_jepa_pretraining_1979_2016.yml
+      - ./config/temporal_jepa_pretraining_1979_2015.yml
     chain_jobs: 4
     nodes: 2
 
@@ -12,7 +12,7 @@ stages:
     stage: train
     from_run_id: STAGE.multipretrain
     config_files:
-      - ./config/temporal_jepa_pretraining_1979_2016.yml
+      - ./config/temporal_jepa_pretraining_1979_2015.yml
       - ./config/temporal_jepa_pretraining_2016_2022.yml
     chain_jobs: 3
     nodes: 2
