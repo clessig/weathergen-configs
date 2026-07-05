@@ -126,8 +126,8 @@ general:
 # logging frequency in the training loop (in number of batches)
 train_logging:
   terminal: 100
-  metrics: 20
-  checkpoint: 500
+  metrics: 100
+  checkpoint: 256
   log_grad_norms: False
 
   # Collapse monitoring for SSL training (JEPA/DINO/iBOT)
