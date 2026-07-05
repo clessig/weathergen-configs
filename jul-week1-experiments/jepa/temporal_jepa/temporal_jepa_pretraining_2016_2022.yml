@@ -133,7 +133,7 @@ train_logging:
 # parameters for data loading
 data_loading :
 
-  num_workers: 6
+  num_workers: 8
   rng_seed: ???
 
 
