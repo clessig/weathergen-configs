@@ -188,12 +188,12 @@ training_config:
     parallel_scaling_policy: "sqrt"
 
   optimizer:
-    grad_clip: 0.25
-    weight_decay: 0.05
+    grad_clip: 1.0
+    weight_decay: 0.1
     adamw :
       # parameters are scaled by number of DDP workers
-      beta1 : 0.9875 # at B=8 beta1 =0.9
-      beta2 : 0.99875 # at B=8 beta1 approx 0.99
+      beta1 : 0.9875 # == 0.9 on 2 nodes x 4 gpus
+      beta2 : 0.99875  # == 0.99 on 2 nodes x 4 gpus
       eps : 2e-08
 
   losses : {
