@@ -16,7 +16,7 @@ stages:
     chain_jobs: 3
     nodes: 2
 
-  # Stage 3a: Forecasting finetuning (freezes encoder)
+  # 3a: Forecasting finetuning (freezes encoder)
   - name: frcstft
     stage: train
     from_run_id: STAGE.mltiprtrnft
@@ -25,7 +25,7 @@ stages:
     chain_jobs: 4
     nodes: 2
 
-  # Stage 3b: Forecasting finetuning (unfreeze encoder)
+  # 3b: Forecasting finetuning (unfreeze encoder)
   # - name: frcstft
   #   stage: train
   #   from_run_id: STAGE.mltiprtrnft
@@ -34,7 +34,6 @@ stages:
   #   chain_jobs: 4
   #   nodes: 2
 
-  # Stage 3: Forecasting finetuning unfrozen
   - name: operfrcstft2
     stage: train
     from_run_id: STAGE.frcstft
@@ -43,7 +42,6 @@ stages:
     chain_jobs: 1
     nodes: 2
 
-  # Stage 4: Forecasting finetuning unfrozen
   - name: operfrcstft8
     stage: train
     from_run_id: STAGE.operfrcstft2
@@ -51,3 +49,9 @@ stages:
       - ./config/operan_o96_obs_o256_forecast_8step.yml
     chain_jobs: 2
     nodes: 2
+
+  - name: operfrcstinf
+    stage: inference
+    from_run_id: STAGE.operfrcstft8
+    nodes: 2
+

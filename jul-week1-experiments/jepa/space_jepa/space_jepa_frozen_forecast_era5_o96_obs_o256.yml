@@ -124,14 +124,14 @@ training_config:
     lr_final_decay: 2e-6
     lr_final: 0.0
     num_steps_warmup: 256
-    num_steps_cooldown: 512
+    num_steps_cooldown: 3584
     policy_warmup: "cosine"
     policy_decay: "constant"
     policy_cooldown: "linear"
     parallel_scaling_policy: "sqrt"
 
   optimizer:
-    grad_clip: 0.25
+    grad_clip: 1.0
     weight_decay: 0.1
     log_grad_norms: False
     adamw :

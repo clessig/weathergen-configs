@@ -12,7 +12,7 @@ embed_unembed_mode: "block"
 embed_dropout_rate: 0.1
 
 ae_local_dim_embed: 2048
-ae_local_num_blocks: 4
+ae_local_num_blocks: 2
 ae_local_num_heads: 16
 ae_local_dropout_rate: 0.1
 ae_local_with_qk_lnorm: True
@@ -54,19 +54,7 @@ num_class_tokens: 0
 num_register_tokens: 64
 
 # noise before predictor in JEPA
-noise_pre_predictor_std: 1e-3
-
-# number of steps offset applied to first target window; if set to zero and forecast_steps=0 then
-# one is training an auto-encoder
-fe_num_blocks: 6
-fe_num_heads: 16
-fe_dropout_rate: 0.1
-fe_with_qk_lnorm: True
-fe_layer_norm_after_blocks: [7]  # Index starts at 0. Thus, [3] adds a LayerNorm after the fourth layer
-fe_impute_latent_noise_std: 0.0  # 1e-4
-# currently fixed to 1.0 (due to limitations with flex_attention and triton)
-forecast_att_dense_rate: 1.0
-with_step_conditioning: True # False
+noise_pre_predictor_std: 1e-4
 
 healpix_level: 5
 # Use 2D RoPE instead of traditional global positional encoding
@@ -126,39 +114,10 @@ general:
 
 # logging frequency in the training loop (in number of batches)
 train_logging:
-  terminal: 50
-  metrics: 20
-  checkpoint: 500
+  terminal: 100
+  metrics: 100
+  checkpoint: 256
   log_grad_norms: False
-
-  # Collapse monitoring for SSL training (JEPA/DINO/iBOT)
-  # Detects representation collapse via various metrics
-  # For forecasting, supports sequences of latents with per-step and aggregate metrics
-  collapse_monitoring:
-    enabled: False
-    compute_frequency: 100  # batches between metric computations
-    log_frequency: 100      # batches between metric logging
-    metrics:
-      effective_rank:
-        enabled: true
-        tensor_source: "both"  # "student", "teacher", or "both"
-        sample_size: 2048      # max samples for SVD (0 = no sampling)
-        # For forecasting sequences: "all" (per-step + aggregates),
-        # "aggregate_only" (mean/min/max/degradation), "per_step_only"
-        forecast_aggregation: "all"
-      singular_values:
-        enabled: true
-        tensor_source: "both"
-        sample_size: 2048
-        forecast_aggregation: "all"
-      dimension_variance:
-        enabled: true
-        tensor_source: "both"  # cheap to compute, good early indicator
-        forecast_aggregation: "all"
-      prototype_entropy:
-        enabled: true  # only applies to DINO
-      ema_beta:
-        enabled: true
 
 # parameters for data loading
 data_loading :
@@ -206,11 +165,11 @@ training_config:
   
   learning_rate_scheduling :
     lr_start: 1e-6
-    lr_max: 1e-4
+    lr_max: 7e-5
     lr_final_decay: 1e-6
     lr_final: 0.0
     num_steps_warmup: 1024
-    num_steps_cooldown: 16384
+    num_steps_cooldown: 4096
     policy_warmup: "cosine"
     policy_decay: "constant"
     policy_cooldown: "linear"
@@ -246,7 +205,7 @@ training_config:
         },
         target_and_aux_calc: { "EMATeacher" : 
           { ema_ramp_up_ratio : null,
-            ema_halflife_in_thousands: 400000,
+            ema_halflife_in_thousands: 300000,
             model_param_overrides : { 
               training_config: { losses: { student-teacher:{ loss_fcts :{JEPA: {head: identity} }}}}
             },
