@@ -165,7 +165,7 @@ training_config:
   
   learning_rate_scheduling :
     lr_start: 1e-6
-    lr_max: 1e-4
+    lr_max: 7e-5
     lr_final_decay: 1e-6
     lr_final: 0.0
     num_steps_warmup: 1024
@@ -205,7 +205,7 @@ training_config:
         },
         target_and_aux_calc: { "EMATeacher" : 
           { ema_ramp_up_ratio : null,
-            ema_halflife_in_thousands: 400000,
+            ema_halflife_in_thousands: 300000,
             model_param_overrides : { 
               training_config: { losses: { student-teacher:{ loss_fcts :{JEPA: {head: identity} }}}}
             },
