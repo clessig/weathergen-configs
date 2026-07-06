@@ -10,8 +10,6 @@
 freeze_modules: ".*global.*|.*local.*|.*adapter.*|.*q_cells.*|.*latent.*|.*ERA5.*|.*encoder.*"
  # freeze_modules: ""
 
-streams_directory: "./weathergen-configs/streams/operan_n320_geos_o256_avhrr_iasipc/"
-
 general:
 
   # mutable parameters
