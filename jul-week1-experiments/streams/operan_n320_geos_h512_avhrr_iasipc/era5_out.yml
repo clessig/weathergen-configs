@@ -16,10 +16,9 @@ ERA5 :
   geoinfo_channels : ['z', 'lsm', 'slor', 'sdor', 'insolation', 'cos_local_time', 'sin_local_time', 'cos_julian_day', 'sin_julian_day']
   loss_weight : 1.
   location_weight : cosine_latitude
-  token_size : 512 # 8
+  token_size : 32
   tokenize_spacetime : False
   max_num_targets: 542080
-  # max_num_targets: 24576
   diagnostic: True
   embed : 
     net : transformer
