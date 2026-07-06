@@ -9,7 +9,7 @@
 
 freeze_modules: ""
 
-streams_directory: "./weathergen-configs/streams/operan_n320_geos_o256_avhrr_iasipc/"
+streams_directory: "./weathergen-configs/jul-week1-experiments/streams/operan_n320_geos_o256_avhrr_iasipc"
 
 general:
   # mutable parameters
