@@ -7,7 +7,7 @@
 # granted to it by virtue of its status as an intergovernmental organisation
 # nor does it submit to any jurisdiction.
 
-METEOSAT_SEVIRI_IR_HIRES :
+METEOSAT_SEVIRI_IR :
   type : obs
   stream_id : 10
   filenames : ['observations-file-2014-2024-seviri-h512-v5.zarr']
@@ -33,7 +33,7 @@ METEOSAT_SEVIRI_IR_HIRES :
     num_layers : 1
 
 
-GOES_ABI_IR_HIRES :
+GOES_ABI_IR :
   type : obs
   stream_id : 11
   filenames : ['observations-file-2017-2024-abi-goes16-IR-h512-v2.zarr']
@@ -59,7 +59,7 @@ GOES_ABI_IR_HIRES :
     num_layers : 1
 
 
-HIMAWARI_AHI_IR_HIRES :
+HIMAWARI_AHI_IR :
   type : obs
   stream_id : 12
   filenames : ['observations-file-2015-2022-himawari8-IR-h512-v1.zarr', 'observations-file-2022-2024-himawari9-IR-o256-v1.zarr']
@@ -111,7 +111,7 @@ GOES_ABI_VIS_HIRES   :
     num_layers : 1
 
 
-HIMAWARI_AHI_VIS_HIRES :
+HIMAWARI_AHI_VIS :
   type : obs
   stream_id : 14
   filenames : ['observations-file-2015-2022-himawari8-VIS-h512-v1.zarr', 'observations-file-2022-2024-himawari9-VIS-h512-v2.zarr']
