@@ -1,0 +1,32 @@
+parallelize: false
+
+stages:
+  - name: frcsttrain
+    stage: train
+    base_config: ./weathergen-configs/jul-week1-experiments/forecast/era5_n320_obs_o256_forecast.yml
+    chain_jobs: 8
+    nodes: 2
+
+  - name: operfrcst2step
+    stage: train
+    from_run_id: STAGE.frcsttrain
+    config_files:
+      - ./weathergen-configs/jul-week1-experiments/forecast/operan_n320_obs_o256_forecast_2step.yml
+    chain_jobs: 1
+    nodes: 2
+
+  # uv run torchrun  --nproc-per-node=4 src/weathergen/run_train.py train_continue --from-run-id r2dk690z --config ./weathergen-configs/jul-week1-experiments/forecast/operan_n320_obs_o256_forecast_8step.yml --options streams.ERA5.max_num_targets=108416
+  - name: operfrcst8step
+    stage: train
+    from_run_id: STAGE.operfrcst2step
+    config_files:
+      - ./weathergen-configs/jul-week1-experiments/forecast/operan_n320_obs_o256_forecast_8step.yml
+    options:
+      - streams.ERA5.max_num_targets=108416
+    chain_jobs: 4
+    nodes: 2
+
+  - name: operfrcstinf
+    stage: inference
+    from_run_id: STAGE.operfrcst8step
+    nodes: 2
