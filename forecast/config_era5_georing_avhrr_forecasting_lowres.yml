@@ -89,6 +89,11 @@ load_chkpt: {}
 
 norm_type: "LayerNorm"
 
+# decoder_ens_latent_perturbation : 
+#   num_members: 2    # 0 / 1 = disabled; >1 = number of ensemble members
+#   sigma_init: 0.2  # initial noise standard deviation
+#   sigma_learnable: True  # true = nn.Parameter; false = fixed buffer
+
 #####################################
 
 # streams_directory: "./config/streams/era5_georing_avhrr/"
@@ -142,7 +147,7 @@ training_config:
   samples_per_mini_epoch: 8192
   shuffle: True
 
-  start_date: 1990-01-01T00:00
+  start_date: 1979-01-01T00:00
   end_date: 2022-12-31T00:00
 
   time_window_step: 01:00:00

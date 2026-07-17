@@ -143,26 +143,14 @@ GOES_ABI_VIS :
 HIMAWARI_AHI_VIS :
   type : obs
   stream_id : 14
-  filenames : ['observations-file-2015-2022-himawari8-VIS-o256-v1.zarr', 'observations-file-2022-2024-himawari9-VIS-o256-v1.zarr']
-  # geoinfo_channels : ['cos_local_time', 'sin_local_time', 'cos_julian_day', 'sin_julian_day', 'zenith', 'cos_sza']
-  geoinfo_channels : ['zenith']
+  filenames : ['observations-file-2015-2022-himawari8-VIS-o256-v1.zarr', 'observations-file-2022-2024-himawari9-VIS-o256-v3.zarr']
+  geoinfo_channels : ['cos_local_time', 'sin_local_time', 'cos_julian_day', 'sin_julian_day', 'zenith', 'cos_sza', 'cos_latitude', 'sin_latitude', 'cos_longitude', 'sin_longitude']
   loss_weight : 1.0
-  location_weight : cosine_latitude
-  masking_override :
-    model_input :
-      masking_strategy: "random"
-      masking_strategy_config :
-        rate: 1.0
   token_size : 1024
   tokenize_spacetime : False
-  max_num_targets: 131072
   forcing: True
   embed :
-    net : transformer
-    num_tokens : 1
-    num_heads : 4
-    dim_embed : 512
-    num_blocks : 2
+    net : linear
   embed_target_coords : 
     net : linear
     dim_embed : 512
