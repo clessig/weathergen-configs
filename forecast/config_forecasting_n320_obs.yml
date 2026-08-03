@@ -93,8 +93,9 @@ norm_type: "LayerNorm"
 # streams_directory: "./config/streams/era5_1deg_forecasting/"
 # streams_directory: "./config/streams/era5_georing_avhrr_synop_lowres/"
 # streams_directory: "./weathergen-configs/streams/era5_n320_forecasting/"
-streams_directory: "./weathergen-configs/streams/era5_georing_avhrr_synop_lowres_transformer/"
-streams_directory: "./weathergen-configs/streams/era5_georing_avhrr_synop_lowres_linear/"
+# streams_directory: "./weathergen-configs/streams/era5_georing_avhrr_synop_lowres_transformer/"
+streams_directory: "./weathergen-configs/streams_preprint/era5_georing_avhrr_synop_lowres_linear/"
+# streams_directory: "./weathergen-configs/streams_preprint/era5_georing_avhrr_synop_lowres_transformer/"
 streams: ???
 
 # type of zarr_store
@@ -130,6 +131,7 @@ train_logging:
 data_loading :
 
   num_workers: 12
+  num_workers_validation: 6
   rng_seed: ???
   repeat_data_in_mini_epoch : False
   # memory_pinning: True
