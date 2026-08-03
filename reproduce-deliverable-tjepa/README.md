@@ -1,0 +1,1 @@
+These configs aim to reproduce the JEPA model used for the deliverable in July 2026. It is an O96 temporal JEPA pre-trained model, followed by 2 and then 8 step forecast finetuning, with everything unfrozen.
