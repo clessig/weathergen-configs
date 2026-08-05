@@ -93,7 +93,7 @@ norm_type: "LayerNorm"
 # streams_directory: "./config/streams/era5_1deg_forecasting/"
 # streams_directory: "./config/streams/era5_georing_avhrr_synop_lowres/"
 # streams_directory: "./weathergen-configs/streams/era5_n320_forecasting/"
-streams_directory: "./weathergen-configs/streams/era5_georing_avhrr_synop_lowres_2/"
+streams_directory: "./weathergen-configs/streams_preprint/era5_georing_avhrr_synop_lowres_linear/"
 streams: ???
 
 # type of zarr_store
@@ -147,8 +147,8 @@ training_config:
   start_date: 1979-01-01T00:00
   end_date: 2022-12-31T00:00
 
-  time_window_step: 01:00:00
-  time_window_len: 06:00:00
+  time_window_step: 06:00:00
+  time_window_len: 12:00:00
   
   learning_rate_scheduling :
     lr_start: 1e-6
