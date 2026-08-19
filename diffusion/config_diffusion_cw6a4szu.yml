@@ -122,7 +122,7 @@ qk_norm_type: "RMSNorm"
 
 #####################################
 
-streams_directory: "/users/mkarlbau/repos/weathergen-configs/diffusion/streams/sebs_cw6a4szu/"
+streams_directory: "/e/project1/e-ext-2025e01-128/karlbauer1/repos/weathergen-configs/diffusion/streams/sebs_cw6a4szu/"
 streams: ???
 
 zarr_store: "zip"

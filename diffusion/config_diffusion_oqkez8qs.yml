@@ -117,7 +117,7 @@ norm_type: "LayerNorm"
 qk_norm_type: "RMSNorm"
 ddp_find_unused_parameters: false
 
-streams_directory: "/users/mkarlbau/repos/weathergen-configs/diffusion/streams/sophies_oqkez8qs/"
+streams_directory: "/e/project1/e-ext-2025e01-128/karlbauer1/repos/weathergen-configs/diffusion/streams/sophies_oqkez8qs/"
 streams: ???
 
 zarr_store: "zip"

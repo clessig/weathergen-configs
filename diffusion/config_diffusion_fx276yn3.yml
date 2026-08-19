@@ -74,8 +74,8 @@ with_step_conditioning: True # False
 frequency_embedding_dim: 256
 embedding_dim: 512
 noise_distribution: &noise_distribution "log_uniform"  # "log_uniform" or "log_normal"
-sigma_min: &sigma_min 0.002
-sigma_max: &sigma_max 20
+sigma_min: &sigma_min 0.4
+sigma_max: &sigma_max 50
 sigma_data: 1.0
 rho: 7
 p_mean: 3.5  # only required if noise_distribution is log_normal
@@ -111,7 +111,7 @@ latent_noise_deterministic_latents: True
 #below for FE training only
 freeze_modules: ".*latent_pre_norm.*|.*latent_heads.*|.*pred_heads.*|.*target_token_engines.*|.*embed_target_coords.*|.*encoder.*|.*StreamEmbedder_ERA5.*|.*embed_engine.*|.*ae_local_engine.*|.*ae_local_global_engine.*|.*ae_global_engine.*"
 #below for DECODER training only
-# freeze_modules: ".*latent_pre_norm.*|.*latent_heads.*|.*encoder.*|.*StreamEmbedder_ERA5.*|.*embed_engine.*|.*noise_embedder.*|.*fe.*|.*ae_local_engine.*|.*ae_local_global_engine.*|.*ae_global_engine.*"
+# freeze_modules: ".*latent_pre_norm.*|.*latent_heads.*|.*encoder.*|.*StreamEmbedder_ERA5.*|.*embed_engine.*|.*noise_embedder.*|.*fe.*|.*latent_proj.*|.*ae_local_engine.*|.*ae_local_global_engine.*|.*ae_global_engine.*"
 #below for FE and DECODER training
 # freeze_modules: ".*latent_pre_norm.*|.*latent_heads.*|.*encoder.*|.*StreamEmbedder_ERA5.*|.*embed_engine.*|.*ae_local_engine.*|.*ae_local_global_engine.*|.*ae_global_engine.*"
 
@@ -122,7 +122,7 @@ qk_norm_type: "RMSNorm"
 
 #####################################
 
-streams_directory: "/users/mkarlbau/repos/weathergen-configs/diffusion/streams/sebs_fx276yn3/"
+streams_directory: "/e/project1/e-ext-2025e01-128/karlbauer1/repos/weathergen-configs/diffusion/streams/sebs_fx276yn3/"
 streams: ???
 
 zarr_store: "zip"
