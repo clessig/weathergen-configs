@@ -192,7 +192,7 @@ training_config:
 
   learning_rate_scheduling :
     lr_start: 1e-6 #5e-5
-    lr_max: 1e-5 #1e-4
+    lr_max: 1e-4 #1e-4
     lr_final_decay: 1e-6
     lr_final: 0.0
     num_steps_warmup: 64

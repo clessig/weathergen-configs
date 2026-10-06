@@ -74,8 +74,8 @@ with_step_conditioning: True # False
 frequency_embedding_dim: 256
 embedding_dim: 512
 noise_distribution: &noise_distribution "log_uniform"  # "log_uniform" or "log_normal"
-sigma_min: &sigma_min 0.002
-sigma_max: &sigma_max 20
+sigma_min: &sigma_min 0.4
+sigma_max: &sigma_max 50
 sigma_data: 1.0
 rho: 7
 p_mean: 3.5  # only required if noise_distribution is log_normal
@@ -193,7 +193,7 @@ training_config:
 
   learning_rate_scheduling :
     lr_start: 1e-6 #5e-5
-    lr_max: 1e-5 #1e-4
+    lr_max: 1e-4 #1e-4
     lr_final_decay: 1e-6
     lr_final: 0.0
     num_steps_warmup: 64
