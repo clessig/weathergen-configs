@@ -110,18 +110,18 @@ latent_noise_deterministic_latents: True
 #below for FE training only
 # freeze_modules: ".*latent_pre_norm.*|.*latent_heads.*|.*pred_heads.*|.*target_token_engines.*|.*embed_target_coords.*|.*encoder.*|.*StreamEmbedder_ERA5.*|.*embed_engine.*|.*ae_local_engine.*|.*ae_local_global_engine.*|.*ae_global_engine.*"
 #below for DECODER training only
-freeze_modules: ".*latent_pre_norm.*|.*latent_heads.*|.*encoder.*|.*StreamEmbedder_ERA5.*|.*embed_engine.*|.*noise_embedder.*|.*fe.*|.*latent_proj.*|.*ae_local_engine.*|.*ae_local_global_engine.*|.*ae_global_engine.*"
+freeze_modules: ".*latent_pre_norm.*|.*latent_heads.*|.*encoder.*|.*StreamEmbedder_ERA5.*|.*embed_engine.*|.*noise_embedder.*|.*fe.*|.*ae_local_engine.*|.*ae_local_global_engine.*|.*ae_global_engine.*"
 #below for FE and DECODER training
 # freeze_modules: ".*latent_pre_norm.*|.*latent_heads.*|.*encoder.*|.*StreamEmbedder_ERA5.*|.*embed_engine.*|.*ae_local_engine.*|.*ae_local_global_engine.*|.*ae_global_engine.*"
 
-load_chkpt: {'run_id': 'skkbxfya', 'mini-epoch': -1}  # Christian's 8-node model
+load_chkpt: {'run_id': 'qyehik8n', 'epoch': -1}  # Christian's 8-node model
 
 norm_type: "LayerNorm"
 # qk_norm_type: "RMSNorm"
 
 #####################################
 
-streams_directory: "/e/project1/e-ext-2025e01-128/karlbauer1/repos/weathergen-configs/diffusion/streams/era5_georing_avhrr_synop_lowres_linear/"
+streams_directory: "/e/project1/e-ext-2025e01-128/karlbauer1/repos/weathergen-configs/diffusion/streams/christians_qyehik8n/"
 streams: ???
 
 zarr_store: "zip"
@@ -153,7 +153,7 @@ train_logging:
   log_grad_norms: False
 
 data_loading:
-  num_workers: 10
+  num_workers: 4
   num_workers_validation: 4
   rng_seed: ???
   repeat_data_in_mini_epoch: False
@@ -165,7 +165,7 @@ training_config:
   samples_per_mini_epoch: 4096
   shuffle: True
 
-  start_date: 1979-01-01T00:00
+  start_date: 2016-01-01T00:00
   end_date: 2022-12-31T00:00
 
   time_window_step: 06:00:00
@@ -194,20 +194,20 @@ training_config:
       eps : 2e-08
 
   losses : {
-    # "physical": {
-    #    type: LossPhysical,
-    #    weight: 0.0,
-    #    loss_fcts: {
-    #      "mse": {},
-    #    },
-    #    target_and_aux_calc: "Physical",
-    # },
-    "latent_diff": {
-        type: LossLatentDiffusion,
-        weight: 1.0,
-        target_and_aux_calc: DiffusionLatentTargetEncoder,
-        loss_fcts: { "mse": { }, },
-        }
+    "physical": {
+       type: LossPhysical,
+       weight: 0.0,
+       loss_fcts: {
+         "mse": {},
+       },
+       target_and_aux_calc: "Physical",
+    },
+    # "latent_diff": {
+    #     type: LossLatentDiffusion,
+    #     weight: 1.0,
+    #     target_and_aux_calc: DiffusionLatentTargetEncoder,
+    #     loss_fcts: { "mse": { }, },
+    #     }
   }
   
   model_input: {

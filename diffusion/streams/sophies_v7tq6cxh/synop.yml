@@ -1,0 +1,95 @@
+# Stream configuration for diffusion training on top of run v7tq6cxh.
+# Generated verbatim from models/v7tq6cxh/model_v7tq6cxh.json so that the frozen
+# encoder/decoder modules match the v7tq6cxh checkpoint exactly.
+SurfaceCombined:
+  type: obs
+  stream_id: 30
+  filenames:
+  - observations-ea-ofb-0001-1979-2025-combined-surface-v5.zarr
+  source:
+  - obsvalue_tsts_0
+  - obsvalue_t2m_0
+  - obsvalue_td2m_0
+  - obsvalue_u10m_0
+  - obsvalue_v10m_0
+  - obsvalue_pmsl_0
+  - obsvalue_ps_0
+  target:
+  - obsvalue_tsts_0
+  - obsvalue_t2m_0
+  - obsvalue_td2m_0
+  - obsvalue_u10m_0
+  - obsvalue_v10m_0
+  - obsvalue_pmsl_0
+  - obsvalue_ps_0
+  geoinfo_channels:
+  - stalt
+  - lsm
+  - cos_sza
+  - cos_local_time
+  - sin_local_time
+  - cos_julian_day
+  - sin_julian_day
+  loss_weight: 1.0
+  token_size: 256
+  tokenize_spacetime: false
+  max_num_targets: -1
+  embed:
+    net: transformer
+    num_tokens: 1
+    num_heads: 2
+    dim_embed: 512
+    num_blocks: 2
+  embed_target_coords:
+    net: linear
+    dim_embed: 512
+  target_readout:
+    num_layers: 1
+    num_heads: 4
+    self_attention: false
+    mlp_hidden_factor: 1
+  pred_head:
+    ens_size: 1
+    num_layers: 1
+  name: SurfaceCombined
+  train_source_channels:
+  - obsvalue_tsts_0
+  - obsvalue_t2m_0
+  - obsvalue_td2m_0
+  - obsvalue_u10m_0
+  - obsvalue_v10m_0
+  - obsvalue_pmsl_0
+  - obsvalue_ps_0
+  train_target_channels:
+  - obsvalue_tsts_0
+  - obsvalue_t2m_0
+  - obsvalue_td2m_0
+  - obsvalue_u10m_0
+  - obsvalue_v10m_0
+  - obsvalue_pmsl_0
+  - obsvalue_ps_0
+  target_channel_weights:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  val_source_channels:
+  - obsvalue_tsts_0
+  - obsvalue_t2m_0
+  - obsvalue_td2m_0
+  - obsvalue_u10m_0
+  - obsvalue_v10m_0
+  - obsvalue_pmsl_0
+  - obsvalue_ps_0
+  val_target_channels:
+  - obsvalue_tsts_0
+  - obsvalue_t2m_0
+  - obsvalue_td2m_0
+  - obsvalue_u10m_0
+  - obsvalue_v10m_0
+  - obsvalue_pmsl_0
+  - obsvalue_ps_0
+  forcing: true

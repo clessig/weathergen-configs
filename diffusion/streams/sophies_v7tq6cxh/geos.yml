@@ -1,0 +1,502 @@
+# Stream configuration for diffusion training on top of run v7tq6cxh.
+# Generated verbatim from models/v7tq6cxh/model_v7tq6cxh.json so that the frozen
+# encoder/decoder modules match the v7tq6cxh checkpoint exactly.
+GOES_ABI_IR:
+  type: obs
+  stream_id: 11
+  filenames:
+  - observations-file-2017-2024-abi-goes16-IR-o256-v2.zarr
+  geoinfo_channels:
+  - cos_local_time
+  - sin_local_time
+  - cos_julian_day
+  - sin_julian_day
+  - zenith
+  - cos_sza
+  loss_weight: 1.0
+  location_weight: cosine_latitude
+  token_size: 1024
+  tokenize_spacetime: false
+  max_num_targets: 131072
+  embed:
+    net: transformer
+    num_tokens: 1
+    num_heads: 4
+    dim_embed: 512
+    num_blocks: 2
+  embed_target_coords:
+    net: linear
+    dim_embed: 512
+  target_readout:
+    num_layers: 2
+    num_heads: 4
+  pred_head:
+    ens_size: 1
+    num_layers: 1
+  name: GOES_ABI_IR
+  train_source_channels:
+  - obsvalue_rawbt_380
+  - obsvalue_rawbt_620
+  - obsvalue_rawbt_730
+  - obsvalue_rawbt_850
+  - obsvalue_rawbt_960
+  - obsvalue_rawbt_105
+  - obsvalue_rawbt_120
+  - obsvalue_rawbt_133
+  train_target_channels:
+  - obsvalue_rawbt_380
+  - obsvalue_rawbt_620
+  - obsvalue_rawbt_730
+  - obsvalue_rawbt_850
+  - obsvalue_rawbt_960
+  - obsvalue_rawbt_105
+  - obsvalue_rawbt_120
+  - obsvalue_rawbt_133
+  target_channel_weights:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  val_source_channels:
+  - obsvalue_rawbt_380
+  - obsvalue_rawbt_620
+  - obsvalue_rawbt_730
+  - obsvalue_rawbt_850
+  - obsvalue_rawbt_960
+  - obsvalue_rawbt_105
+  - obsvalue_rawbt_120
+  - obsvalue_rawbt_133
+  val_target_channels:
+  - obsvalue_rawbt_380
+  - obsvalue_rawbt_620
+  - obsvalue_rawbt_730
+  - obsvalue_rawbt_850
+  - obsvalue_rawbt_960
+  - obsvalue_rawbt_105
+  - obsvalue_rawbt_120
+  - obsvalue_rawbt_133
+  forcing: true
+GOES_ABI_VIS:
+  type: obs
+  stream_id: 13
+  filenames:
+  - observations-file-2017-2024-abi-goes16-VIS-o256-v2.zarr
+  geoinfo_channels:
+  - zenith
+  loss_weight: 1.0
+  location_weight: cosine_latitude
+  token_size: 1024
+  tokenize_spacetime: false
+  max_num_targets: 131072
+  embed:
+    net: transformer
+    num_tokens: 1
+    num_heads: 4
+    dim_embed: 512
+    num_blocks: 2
+  embed_target_coords:
+    net: linear
+    dim_embed: 512
+  target_readout:
+    num_layers: 2
+    num_heads: 4
+  pred_head:
+    ens_size: 1
+    num_layers: 1
+  name: GOES_ABI_VIS
+  train_source_channels:
+  - obsvalue_rawbt_086
+  - obsvalue_rawbt_160
+  train_target_channels:
+  - obsvalue_rawbt_086
+  - obsvalue_rawbt_160
+  target_channel_weights:
+  - 1.0
+  - 1.0
+  val_source_channels:
+  - obsvalue_rawbt_086
+  - obsvalue_rawbt_160
+  val_target_channels:
+  - obsvalue_rawbt_086
+  - obsvalue_rawbt_160
+  forcing: true
+HIMAWARI_AHI_IR:
+  type: obs
+  stream_id: 12
+  filenames:
+  - observations-file-2015-2022-himawari8-IR-o256-v1.zarr
+  - observations-file-2022-2024-himawari9-IR-o256-v1.zarr
+  geoinfo_channels:
+  - cos_local_time
+  - sin_local_time
+  - cos_julian_day
+  - sin_julian_day
+  - zenith
+  - cos_sza
+  loss_weight: 1.0
+  location_weight: cosine_latitude
+  token_size: 1024
+  tokenize_spacetime: false
+  max_num_targets: 131072
+  embed:
+    net: transformer
+    num_tokens: 1
+    num_heads: 4
+    dim_embed: 512
+    num_blocks: 2
+  embed_target_coords:
+    net: linear
+    dim_embed: 512
+  target_readout:
+    num_layers: 2
+    num_heads: 4
+  pred_head:
+    ens_size: 1
+    num_layers: 1
+  name: HIMAWARI_AHI_IR
+  train_source_channels:
+  - obsvalue_rawbt_380
+  - obsvalue_rawbt_620
+  - obsvalue_rawbt_730
+  - obsvalue_rawbt_850
+  - obsvalue_rawbt_960
+  - obsvalue_rawbt_105
+  - obsvalue_rawbt_120
+  - obsvalue_rawbt_133
+  train_target_channels:
+  - obsvalue_rawbt_380
+  - obsvalue_rawbt_620
+  - obsvalue_rawbt_730
+  - obsvalue_rawbt_850
+  - obsvalue_rawbt_960
+  - obsvalue_rawbt_105
+  - obsvalue_rawbt_120
+  - obsvalue_rawbt_133
+  target_channel_weights:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  val_source_channels:
+  - obsvalue_rawbt_380
+  - obsvalue_rawbt_620
+  - obsvalue_rawbt_730
+  - obsvalue_rawbt_850
+  - obsvalue_rawbt_960
+  - obsvalue_rawbt_105
+  - obsvalue_rawbt_120
+  - obsvalue_rawbt_133
+  val_target_channels:
+  - obsvalue_rawbt_380
+  - obsvalue_rawbt_620
+  - obsvalue_rawbt_730
+  - obsvalue_rawbt_850
+  - obsvalue_rawbt_960
+  - obsvalue_rawbt_105
+  - obsvalue_rawbt_120
+  - obsvalue_rawbt_133
+  forcing: true
+HIMAWARI_AHI_VIS:
+  type: obs
+  stream_id: 14
+  filenames:
+  - observations-file-2015-2022-himawari8-VIS-o256-v1.zarr
+  - observations-file-2022-2024-himawari9-VIS-o256-v1.zarr
+  geoinfo_channels:
+  - zenith
+  loss_weight: 1.0
+  location_weight: cosine_latitude
+  token_size: 1024
+  tokenize_spacetime: false
+  max_num_targets: 131072
+  embed:
+    net: transformer
+    num_tokens: 1
+    num_heads: 4
+    dim_embed: 512
+    num_blocks: 2
+  embed_target_coords:
+    net: linear
+    dim_embed: 512
+  target_readout:
+    num_layers: 2
+    num_heads: 4
+  pred_head:
+    ens_size: 1
+    num_layers: 1
+  name: HIMAWARI_AHI_VIS
+  train_source_channels:
+  - obsvalue_rawbt_086
+  - obsvalue_rawbt_160
+  train_target_channels:
+  - obsvalue_rawbt_086
+  - obsvalue_rawbt_160
+  target_channel_weights:
+  - 1.0
+  - 1.0
+  val_source_channels:
+  - obsvalue_rawbt_086
+  - obsvalue_rawbt_160
+  val_target_channels:
+  - obsvalue_rawbt_086
+  - obsvalue_rawbt_160
+  forcing: true
+METEOSAT_SEVIRI_IR:
+  type: obs
+  stream_id: 10
+  filenames:
+  - observations-file-2014-2024-seviri-o256-wegen-v3.zarr
+  geoinfo_channels:
+  - cos_local_time
+  - sin_local_time
+  - cos_julian_day
+  - sin_julian_day
+  - zenith
+  - cos_sza
+  loss_weight: 1.0
+  location_weight: cosine_latitude
+  token_size: 1024
+  tokenize_spacetime: false
+  max_num_targets: 131072
+  embed:
+    net: transformer
+    num_tokens: 1
+    num_heads: 4
+    dim_embed: 512
+    num_blocks: 2
+  embed_target_coords:
+    net: linear
+    dim_embed: 512
+  target_readout:
+    num_layers: 2
+    num_heads: 4
+  pred_head:
+    ens_size: 1
+    num_layers: 1
+  name: METEOSAT_SEVIRI_IR
+  train_source_channels:
+  - obsvalue_rawbt_065
+  - obsvalue_rawbt_086
+  - obsvalue_rawbt_160
+  - obsvalue_rawbt_380
+  - obsvalue_rawbt_620
+  - obsvalue_rawbt_730
+  - obsvalue_rawbt_850
+  - obsvalue_rawbt_960
+  - obsvalue_rawbt_105
+  - obsvalue_rawbt_120
+  - obsvalue_rawbt_133
+  train_target_channels:
+  - obsvalue_rawbt_065
+  - obsvalue_rawbt_086
+  - obsvalue_rawbt_160
+  - obsvalue_rawbt_380
+  - obsvalue_rawbt_620
+  - obsvalue_rawbt_730
+  - obsvalue_rawbt_850
+  - obsvalue_rawbt_960
+  - obsvalue_rawbt_105
+  - obsvalue_rawbt_120
+  - obsvalue_rawbt_133
+  target_channel_weights:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  val_source_channels:
+  - obsvalue_rawbt_065
+  - obsvalue_rawbt_086
+  - obsvalue_rawbt_160
+  - obsvalue_rawbt_380
+  - obsvalue_rawbt_620
+  - obsvalue_rawbt_730
+  - obsvalue_rawbt_850
+  - obsvalue_rawbt_960
+  - obsvalue_rawbt_105
+  - obsvalue_rawbt_120
+  - obsvalue_rawbt_133
+  val_target_channels:
+  - obsvalue_rawbt_065
+  - obsvalue_rawbt_086
+  - obsvalue_rawbt_160
+  - obsvalue_rawbt_380
+  - obsvalue_rawbt_620
+  - obsvalue_rawbt_730
+  - obsvalue_rawbt_850
+  - obsvalue_rawbt_960
+  - obsvalue_rawbt_105
+  - obsvalue_rawbt_120
+  - obsvalue_rawbt_133
+  forcing: true
+METOP_ABC_IASI:
+  type: obs
+  stream_id: 21
+  filenames:
+  - observations-ea-ofb-0001-2007-2021-metop-a-iasi-radiances-v1.zarr
+  - observations-ea-ofb-0001-2013-2023-metop-b-iasi-radiances-v1.zarr
+  - observations-ea-ofb-0001-2019-2023-metop-c-iasi-radiances-v1.zarr
+  geoinfo_channels:
+  - cos_local_time
+  - sin_local_time
+  - cos_julian_day
+  - sin_julian_day
+  source:
+  - obsvalue_rawbt_138
+  - obsvalue_rawbt_16
+  - obsvalue_rawbt_170
+  - obsvalue_rawbt_185
+  - obsvalue_rawbt_224
+  - obsvalue_rawbt_249
+  - obsvalue_rawbt_271
+  - obsvalue_rawbt_2907
+  - obsvalue_rawbt_2991
+  - obsvalue_rawbt_3093
+  - obsvalue_rawbt_3160
+  - obsvalue_rawbt_445
+  - obsvalue_rawbt_5383
+  - obsvalue_rawbt_63
+  - obsvalue_rawbt_756
+  - obsvalue_rawbt_867
+  - obsvalue_rawbt_921
+  target:
+  - obsvalue_rawbt_138
+  - obsvalue_rawbt_16
+  - obsvalue_rawbt_170
+  - obsvalue_rawbt_185
+  - obsvalue_rawbt_224
+  - obsvalue_rawbt_249
+  - obsvalue_rawbt_271
+  - obsvalue_rawbt_2907
+  - obsvalue_rawbt_2991
+  - obsvalue_rawbt_3093
+  - obsvalue_rawbt_3160
+  - obsvalue_rawbt_445
+  - obsvalue_rawbt_5383
+  - obsvalue_rawbt_63
+  - obsvalue_rawbt_756
+  - obsvalue_rawbt_867
+  - obsvalue_rawbt_921
+  loss_weight: 1.0
+  token_size: 512
+  embed:
+    net: transformer
+    num_tokens: 1
+    num_heads: 2
+    dim_embed: 256
+    num_blocks: 2
+  embed_target_coords:
+    net: linear
+    dim_embed: 256
+  target_readout:
+    num_layers: 2
+    num_heads: 4
+  pred_head:
+    ens_size: 1
+    num_layers: 1
+  name: METOP_ABC_IASI
+  train_source_channels:
+  - obsvalue_rawbt_16
+  - obsvalue_rawbt_63
+  - obsvalue_rawbt_138
+  - obsvalue_rawbt_170
+  - obsvalue_rawbt_185
+  - obsvalue_rawbt_224
+  - obsvalue_rawbt_249
+  - obsvalue_rawbt_271
+  - obsvalue_rawbt_445
+  - obsvalue_rawbt_756
+  - obsvalue_rawbt_867
+  - obsvalue_rawbt_921
+  - obsvalue_rawbt_2907
+  - obsvalue_rawbt_2991
+  - obsvalue_rawbt_3093
+  - obsvalue_rawbt_3160
+  - obsvalue_rawbt_5383
+  train_target_channels:
+  - obsvalue_rawbt_16
+  - obsvalue_rawbt_63
+  - obsvalue_rawbt_138
+  - obsvalue_rawbt_170
+  - obsvalue_rawbt_185
+  - obsvalue_rawbt_224
+  - obsvalue_rawbt_249
+  - obsvalue_rawbt_271
+  - obsvalue_rawbt_445
+  - obsvalue_rawbt_756
+  - obsvalue_rawbt_867
+  - obsvalue_rawbt_921
+  - obsvalue_rawbt_2907
+  - obsvalue_rawbt_2991
+  - obsvalue_rawbt_3093
+  - obsvalue_rawbt_3160
+  - obsvalue_rawbt_5383
+  target_channel_weights:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  val_source_channels:
+  - obsvalue_rawbt_16
+  - obsvalue_rawbt_63
+  - obsvalue_rawbt_138
+  - obsvalue_rawbt_170
+  - obsvalue_rawbt_185
+  - obsvalue_rawbt_224
+  - obsvalue_rawbt_249
+  - obsvalue_rawbt_271
+  - obsvalue_rawbt_445
+  - obsvalue_rawbt_756
+  - obsvalue_rawbt_867
+  - obsvalue_rawbt_921
+  - obsvalue_rawbt_2907
+  - obsvalue_rawbt_2991
+  - obsvalue_rawbt_3093
+  - obsvalue_rawbt_3160
+  - obsvalue_rawbt_5383
+  val_target_channels:
+  - obsvalue_rawbt_16
+  - obsvalue_rawbt_63
+  - obsvalue_rawbt_138
+  - obsvalue_rawbt_170
+  - obsvalue_rawbt_185
+  - obsvalue_rawbt_224
+  - obsvalue_rawbt_249
+  - obsvalue_rawbt_271
+  - obsvalue_rawbt_445
+  - obsvalue_rawbt_756
+  - obsvalue_rawbt_867
+  - obsvalue_rawbt_921
+  - obsvalue_rawbt_2907
+  - obsvalue_rawbt_2991
+  - obsvalue_rawbt_3093
+  - obsvalue_rawbt_3160
+  - obsvalue_rawbt_5383
+  forcing: true

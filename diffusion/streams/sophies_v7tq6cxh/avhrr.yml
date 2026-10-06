@@ -1,0 +1,65 @@
+# Stream configuration for diffusion training on top of run v7tq6cxh.
+# Generated verbatim from models/v7tq6cxh/model_v7tq6cxh.json so that the frozen
+# encoder/decoder modules match the v7tq6cxh checkpoint exactly.
+AVHRR:
+  type: obs
+  stream_id: 22
+  filenames:
+  - observations-file-2001-2023-eumetsat-avhrr-o256-v4.zarr
+  geoinfo_channels:
+  - cos_local_time
+  - sin_local_time
+  - cos_julian_day
+  - sin_julian_day
+  coords_channels:
+  - latitude
+  - longitude
+  loss_weight: 1.0
+  token_size: 256
+  embed:
+    net: transformer
+    num_tokens: 1
+    num_heads: 2
+    dim_embed: 256
+    num_blocks: 2
+  embed_target_coords:
+    net: linear
+    dim_embed: 256
+  target_readout:
+    num_layers: 2
+    num_heads: 4
+  pred_head:
+    ens_size: 1
+    num_layers: 1
+  name: AVHRR
+  train_source_channels:
+  - obsvalue_rawbt_1
+  - obsvalue_rawbt_2
+  - obsvalue_rawbt_3
+  - obsvalue_refl_1
+  - obsvalue_refl_2
+  train_target_channels:
+  - obsvalue_rawbt_1
+  - obsvalue_rawbt_2
+  - obsvalue_rawbt_3
+  - obsvalue_refl_1
+  - obsvalue_refl_2
+  target_channel_weights:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  val_source_channels:
+  - obsvalue_rawbt_1
+  - obsvalue_rawbt_2
+  - obsvalue_rawbt_3
+  - obsvalue_refl_1
+  - obsvalue_refl_2
+  val_target_channels:
+  - obsvalue_rawbt_1
+  - obsvalue_rawbt_2
+  - obsvalue_rawbt_3
+  - obsvalue_refl_1
+  - obsvalue_refl_2
+  forcing: true

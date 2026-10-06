@@ -11,8 +11,8 @@ embed_orientation: "channels"
 embed_unembed_mode: "block"
 embed_dropout_rate: 0.1
 
-ae_local_dim_embed: 2048
-ae_local_num_blocks: 2
+ae_local_dim_embed: 1024
+ae_local_num_blocks: 4
 ae_local_num_heads: 16
 ae_local_dropout_rate: 0.1
 ae_local_with_qk_lnorm: True
@@ -26,22 +26,22 @@ ae_adapter_with_residual: True
 ae_adapter_dropout_rate: 0.1
 
 ae_global_dim_embed: 2048
-ae_global_num_blocks: 4
-ae_global_num_heads: 32
+ae_global_num_blocks: 5
+ae_global_num_heads: 16
 ae_global_dropout_rate: 0.1
 ae_global_with_qk_lnorm: True
 ae_global_att_dense_rate: 1.0
 ae_global_block_factor: 64
-ae_global_mlp_hidden_factor: 2
-ae_global_trailing_layer_norm: False
+ae_global_mlp_hidden_factor: 4
+ae_global_trailing_layer_norm: True
 
-ae_aggregation_num_blocks: 0
-ae_aggregation_num_heads: 32
+ae_aggregation_num_blocks: 5
+ae_aggregation_num_heads: 16
 ae_aggregation_dropout_rate: 0.1
 ae_aggregation_with_qk_lnorm: True
 ae_aggregation_att_dense_rate: 1.0
 ae_aggregation_block_factor: 64
-ae_aggregation_mlp_hidden_factor: 2
+ae_aggregation_mlp_hidden_factor: 4
 
 decoder_type: PerceiverIOCoordConditioning
 pred_adapter_kv: False
@@ -49,11 +49,11 @@ pred_self_attention: True
 pred_dyadic_dims: False
 pred_mlp_adaln: True
 num_class_tokens: 0
-num_register_tokens: 0
+num_register_tokens: 64
 
 # number of steps offset applied to first target window; if set to zero and forecast_steps=0 then
 # one is training an auto-encoder
-diffusion: {noise_stream: ERA5}
+diffusion: {noise_stream: ERA5_in}
 fe_num_blocks: 12
 fe_num_heads: 16
 fe_dropout_rate: 0.1
@@ -64,7 +64,7 @@ fe_diffusion_predict_residual: False
 fe_diffusion_classifier_free_guidance_prob: 0.0
 fe_diffusion_model_conditioning: "forecast" # options: "date_time", "time", "forecast"
 fe_diffusion_model_conditioning_type: "concatenate" # options: "cross_attn", "concatenate", ..., "ada_ln"
-fe_layer_norm_after_blocks: [11]  # Index starts at 0. Thus, [3] adds a LayerNorm after the fourth block
+fe_layer_norm_after_blocks: [16]  # Index starts at 0. Thus, [3] adds a LayerNorm after the fourth block
 fe_impute_latent_noise_std: 0.0  # 1e-4
 fe_impute_latent_diffusion_noise_std: 1e-3  # 1e-4
 # currently fixed to 1.0 (due to limitations with flex_attention and triton)
@@ -75,7 +75,7 @@ frequency_embedding_dim: 256
 embedding_dim: 512
 noise_distribution: &noise_distribution "log_uniform"  # "log_uniform" or "log_normal"
 sigma_min: &sigma_min 0.4
-sigma_max: &sigma_max 0.41
+sigma_max: &sigma_max 50
 sigma_data: 1.0
 rho: 7
 p_mean: 3.5  # only required if noise_distribution is log_normal
@@ -87,10 +87,10 @@ healpix_level: 5
 # When True: uses 2D RoPE based on healpix cell coordinates (lat/lon)
 # When False: uses traditional pe_global positional encoding
 rope_2D: True
-mlp_type: mlp
-use_xsa: False
-# mlp_type: swiglu
-# use_xsa: True
+mlp_type: swiglu
+use_xsa: True
+# mlp_type: mlp
+# use_xsa: False
 
 with_mixed_precision: True
 with_flash_attention: True
@@ -107,21 +107,22 @@ latent_noise_saturate_encodings: 5
 latent_noise_use_additive_noise: False
 latent_noise_deterministic_latents: True
 
+
 #below for FE training only
-# freeze_modules: ".*latent_pre_norm.*|.*latent_heads.*|.*pred_heads.*|.*target_token_engines.*|.*embed_target_coords.*|.*encoder.*|.*StreamEmbedder_ERA5.*|.*embed_engine.*|.*ae_local_engine.*|.*ae_local_global_engine.*|.*ae_global_engine.*"
+freeze_modules: ".*latent_pre_norm.*|.*latent_heads.*|.*pred_heads.*|.*target_token_engines.*|.*embed_target_coords.*|.*encoder.*|.*StreamEmbedder_ERA5.*|.*embed_engine.*|.*ae_local_engine.*|.*ae_local_global_engine.*|.*ae_global_engine.*"
 #below for DECODER training only
-freeze_modules: ".*latent_pre_norm.*|.*latent_heads.*|.*encoder.*|.*StreamEmbedder_ERA5.*|.*embed_engine.*|.*noise_embedder.*|.*fe.*|.*latent_proj.*|.*ae_local_engine.*|.*ae_local_global_engine.*|.*ae_global_engine.*"
+# freeze_modules: ".*latent_pre_norm.*|.*latent_heads.*|.*encoder.*|.*StreamEmbedder_ERA5.*|.*embed_engine.*|.*noise_embedder.*|.*fe.*|.*latent_proj.*|.*ae_local_engine.*|.*ae_local_global_engine.*|.*ae_global_engine.*"
 #below for FE and DECODER training
 # freeze_modules: ".*latent_pre_norm.*|.*latent_heads.*|.*encoder.*|.*StreamEmbedder_ERA5.*|.*embed_engine.*|.*ae_local_engine.*|.*ae_local_global_engine.*|.*ae_global_engine.*"
 
-load_chkpt: {'run_id': 'skkbxfya', 'mini-epoch': -1}  # Christian's 8-node model
+load_chkpt: {'run_id': 'zf381x9n', 'mini_epoch': 8}
 
 norm_type: "LayerNorm"
-# qk_norm_type: "RMSNorm"
+qk_norm_type: "RMSNorm"
 
 #####################################
 
-streams_directory: "/e/project1/e-ext-2025e01-128/karlbauer1/repos/weathergen-configs/diffusion/streams/era5_georing_avhrr_synop_lowres_linear/"
+streams_directory: "/e/project1/e-ext-2025e01-128/karlbauer1/repos/weathergen-configs/diffusion/streams/sophies_zf381x9n/"
 streams: ???
 
 zarr_store: "zip"
@@ -146,6 +147,7 @@ general:
   run_id: ???
   run_history: []
 
+# logging frequency in the training loop (in number of batches)
 train_logging:
   terminal: 10
   metrics: 20
@@ -153,23 +155,40 @@ train_logging:
   log_grad_norms: False
 
 data_loading:
-  num_workers: 10
+  num_workers: 8
   num_workers_validation: 4
   rng_seed: ???
   repeat_data_in_mini_epoch: False
+  persistent_workers: False
+  prefetch_factor: 1
+  memory_pinning: False
 
 training_config:
   training_mode: ["masking", "student_teacher"]
+  teacher_time_offset: 0
+
+  deep_ssl:
+    enabled: False
+    tap_after:
+      - "local2global"
+      - "global:0"
+      - "global:1"
+    fusion_hidden_factor: 4
+    level_weights: [0.25, 0.25, 0.25, 0.25]
+
+  context_loss:
+    enabled: False
 
   num_mini_epochs: 128
   samples_per_mini_epoch: 4096
   shuffle: True
 
-  start_date: 1979-01-01T00:00
+  start_date: 1980-01-01T00:00
   end_date: 2022-12-31T00:00
 
   time_window_step: 06:00:00
   time_window_len: 06:00:00
+  window_offset_prediction: 0
 
   learning_rate_scheduling :
     lr_start: 1e-6 #5e-5
@@ -177,7 +196,7 @@ training_config:
     lr_final_decay: 1e-6
     lr_final: 0.0
     num_steps_warmup: 64
-    num_steps_cooldown: 32768
+    num_steps_cooldown: 512
     policy_warmup: "cosine"
     policy_decay: "constant"
     policy_cooldown: "linear"
@@ -218,7 +237,7 @@ training_config:
         diffusion_rn: True,
         noise_distribution: *noise_distribution,
         sigma_min: *sigma_min,
-        sigma_max: *sigma_max,
+        sigma_max: *sigma_max
         },
       num_steps_input: 2,
       num_samples: 1,
@@ -232,7 +251,7 @@ training_config:
         diffusion_rn: True,
         noise_distribution: *noise_distribution,
         sigma_min: *sigma_min,
-        sigma_max: *sigma_max,
+        sigma_max: *sigma_max
         },
       num_steps_input: 1,
       num_samples: 1,
@@ -244,11 +263,8 @@ training_config:
       num_steps: 1
       offset: 0
       policy: "fixed"
-      # chunk_size: 4
 
-
-validation_config: 
-
+validation_config:
   # Noise levels (eta values in standard normal space) at which to evaluate the
   # diffusion model during validation. sigma = exp(eta * p_std + p_mean).
   # Each value produces a separate validation pass with independently logged metrics.
@@ -284,29 +300,8 @@ validation_config:
 # test config is used by default when running inference
 
 # Tags for experiment tracking
-# These tags will be logged in MLFlow along with completed runs for train, eval, val
-# The tags are free-form, with the following rules:
-# - tags should be primitive types (strings, numbers, booleans). NO lists or dictionaries
-# - tags should not duplicate existing config entries.
-# - try to reuse existing tags where possible. MLFlow does not like having too many unique tags
-# - do not use long strings in values (less than 20 characters is a good rule of thumb, we may enforce this in the future)
 wgtags:
-  # The name of the organization of the person running the experiment.
-  # This may be autofilled in the future. Expected values are lowercase strings 
-  # e.g. "ecmwf", "cmcc", "metnor", "jsc", "escience"
   org: null
-  # The Github issue corresponding to this run (number such as 1234)
-  # Github issues are the central point when running experiment and contain 
-  # links to hedgedocs, code branches, pull requests etc.
-  # It is recommended to associate a run with a Github issue.
   issue: null
-  # The name of the experiment. This is a distinctive codename for the experiment campaign being run.
-  # This is expected to be the primary tag for comparing experiments in MLFlow, along with the
-  # issue number.
-  # Expected values are lowercase strings with no spaces, just underscores:
-  # Examples: "rollout_ablation_grid"  
   exp: null
-  # *** Experiment-specific tags ***
-  # All extra tags (including lists, dictionaries, etc.) are treated 
-  # as strings by mlflow, so treat all extra tags as simple string key: value pairs.
   grid: null
