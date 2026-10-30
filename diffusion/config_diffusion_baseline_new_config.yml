@@ -68,6 +68,8 @@ with_step_conditioning: True # False
 diffusion:
   enabled: True  # wrap the forecast engine in a diffusion model
   latent_dim: 2560
+  # learnable register tokens of the denoiser (independent of the encoder's register tokens)
+  num_register_tokens: 0
 
   # conditioning: "forecast" (encoded older input steps), "date_time", "date", "time"
   # or null (unconditional)
