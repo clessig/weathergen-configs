@@ -181,7 +181,7 @@ training_config:
     "forecasting" : {
       # masking strategy: "random", "healpix", "forecast"
       masking_strategy: "forecast",
-      input_steps: 2,
+      num_steps_input: 2,
       },
     }
 
