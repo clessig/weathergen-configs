@@ -26,7 +26,7 @@ ae_adapter_with_residual: True
 ae_adapter_dropout_rate: 0.1
 
 ae_global_dim_embed: 2048
-ae_global_num_blocks: 12
+ae_global_num_blocks: 6
 ae_global_num_heads: 32
 ae_global_dropout_rate: 0.1
 ae_global_with_qk_lnorm: True
@@ -55,7 +55,7 @@ num_register_tokens: 0
 
 # number of steps offset applied to first target window; if set to zero and forecast_steps=0 then
 # one is training an auto-encoder
-fe_num_blocks: 16
+fe_num_blocks: 0
 fe_num_heads: 16
 fe_dropout_rate: 0.1
 fe_with_qk_lnorm: True
@@ -120,17 +120,17 @@ general:
 train_logging:
   terminal: 100
   metrics: 100
-  checkpoint: 250
+  checkpoint: 500
 
 # parameters for data loading
 data_loading :
 
   num_workers: 8
-  num_workers_validation: 6
+  num_workers_validation: 0
   rng_seed: ???
   repeat_data_in_mini_epoch : False
-  # memory_pinning: True
-
+  memory_pinning: False
+  persistent_workers: False
 
 # config for training
 training_config:
@@ -138,7 +138,7 @@ training_config:
   # training_mode: "masking", "student_teacher", "latent_loss"
   training_mode: ["masking"]
 
-  num_mini_epochs: 32
+  num_mini_epochs: 64
   samples_per_mini_epoch: 16384
   shuffle: True
 
@@ -195,10 +195,10 @@ training_config:
 # validation config; full validation config is merge of training and validation config
 validation_config: 
 
-  samples_per_mini_epoch: 1024
+  samples_per_mini_epoch: 128
   shuffle: False
 
-  start_date: 2023-01-01T00:00
+  start_date: 2023-06-01T00:00
   end_date: 2023-12-31T00:00
   
   time_window_step: 06:00:00
