@@ -1,7 +1,7 @@
 
 # #optional: if commented out all is taken care of by the default settings
 # # NB. global options apply to all run_ids
-# max_workers: 4  # limit parallel IO workers; prevents OOM when loading multiple zarr members
+max_workers: 4  # limit parallel IO workers; prevents OOM when loading multiple zarr members
 
 global_plotting_options:
 #  regions: ["europe", "global"]
@@ -10,8 +10,8 @@ global_plotting_options:
   fps: 2
   animation_format: "mp4"
   ERA5:
-    marker_size: 6
-    scale_marker_size: 4
+    marker_size: 8
+    scale_marker_size: 2
   #   marker: "o"
   #   alpha: 0.5
   #   add_healpix_grid: false
@@ -49,6 +49,7 @@ evaluation:
   # metrics: ["rmse"]
   metrics:
     - rmse
+    - froct
   # regions: ["global", "nhem"]
   regions: ["global"]
   summary_plots : true
@@ -90,7 +91,7 @@ default_streams:
       data_plots:
         - maps:
             predictions: [image, video]
-            target: [image]
+            target: [image, video]
             bias: [image, video]
         # - histograms_per_sample        # or histograms_per_sample: [image, video]
         - timeseries
@@ -98,9 +99,9 @@ default_streams:
 
 run_ids :
   
-  fnlycw3o:
-    # type: "json"
-    label: "o96"
+  # fnlycw3o:
+  #   # type: "json"
+  #   label: "o96"
   # kczn4lis:
   #   # type: "json"
   #   label: "o64"
@@ -111,3 +112,31 @@ run_ids :
 
   # lxizs4vp:
   #   label: "o96"
+
+  # xbd3ujig:
+  #   type: "json"
+  #   label: "2x24h, 2-step-ft"
+  # cs6b3uir:
+  #   type: "json"
+  #   label: "2x24h, 4-step-ft"
+  # u1ma5bck:
+  #   type: "json"
+  #   label: "2x24h, 8-step-ft"
+  # rrqq4pyo:
+  #   type: "json"
+  #   label: "3x24h, 2-step-ft"
+  # k3u9u75b:
+  #   type: "json"
+  #   label: "3x24h, 4-step-ft"
+  # ratzlr81:
+  #   type: "json"
+  #   label: "3x24h, 8-step-ft"
+  # la1w4b8f:
+  #   type: "json"
+  #   label: "7x24h, 2-step-ft"
+  # y88my21q:
+  #   type: "json"
+  #   label: "7x24h, 4-step-ft"
+  # fgs0893t:
+  #   type: "json"
+  #   label: "7x24h, 8-step-ft"
