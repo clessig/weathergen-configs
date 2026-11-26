@@ -89,7 +89,7 @@ norm_type: "LayerNorm"
 
 #####################################
 
-streams_directory: "/e/project1/e-ext-2025e01-128/karlbauer1/repos/weathergen-configs/streams/era5_o96_forecasting/"
+streams_directory: "/e/project1/e-ext-2025e01-128/karlbauer1/repos/weathergen-configs/streams/era5_o48_forecasting/"
 streams: ???
 
 # type of zarr_store
@@ -124,7 +124,7 @@ train_logging:
 # parameters for data loading
 data_loading :
 
-  num_workers: 10
+  num_workers: 12
   rng_seed: ???
   repeat_data_in_mini_epoch : False
 
@@ -151,7 +151,7 @@ training_config:
     lr_final_decay: 2e-6
     lr_final: 0.0
     num_steps_warmup: 256
-    num_steps_cooldown: 512
+    num_steps_cooldown: 32768
     policy_warmup: "cosine"
     policy_decay: "constant"
     policy_cooldown: "linear"

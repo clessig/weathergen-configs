@@ -28,9 +28,10 @@ stages:
     stage: inference
     from_run_id: STAGE.finetune
     options:
-      - test_config.forecast.num_steps=20
+      - test_config.forecast.num_steps=120
       - test_config.samples_per_mini_epoch=16
       - test_config.output.num_samples=16
+      - test_config.start_date=2021-06-01
     nodes: 1
     slurm_args:
       - "--time=02:00:00"

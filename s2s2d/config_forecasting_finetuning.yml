@@ -42,7 +42,7 @@ training_config:
   
   learning_rate_scheduling :
     lr_start: 1e-6
-    lr_max: 1e-4
+    lr_max: 5e-5
     lr_final_decay: 2e-6
     lr_final: 0.0
     num_steps_warmup: 256
@@ -53,7 +53,7 @@ training_config:
     parallel_scaling_policy: "sqrt"
 
   forecast :
-      time_step: 24:00:00
+      # time_step: 24:00:00
       offset: 1
       num_steps: 8
       policy: "fixed"

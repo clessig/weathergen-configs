@@ -15,6 +15,9 @@ ERA5 :
       dataset: 'aifs-ea-an-oper-0001-mars-o48-1979-2022-6h-v6'
       rolling_average: [-3, 0, "frequency"]
   frequency: 06:00:00
+  # keep every n-th (24h-spaced) raw 6h-rolling-mean record per window; which phase
+  # (00/06/12/18 UTC) is kept cycles with the sample index when time_window_step == frequency
+  window_stride: 1
   stream_id : 0
   source_exclude : ['z', 'w_10', 'w_50', 'w_100', 'w_150', 'w_200', 'w_250', 'w_300', 'w_400', 'w_500', 'w_600', 'w_700', 'w_850', 'w_925', 'w_1000', 'skt', 'tcw', 'cp', 'tp', 'q_50', 'q_100']
   target_exclude : ['z', 'w_10', 'w_50', 'w_100', 'w_150', 'w_200', 'w_250', 'w_300', 'w_400', 'w_500', 'w_600', 'w_700', 'w_850', 'w_925', 'w_1000', 'slor', 'sdor', 'tcw', 'cp', 'tp', 'q_50', 'q_100']
