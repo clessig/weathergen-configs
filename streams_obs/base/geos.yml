@@ -21,20 +21,9 @@ METEOSAT_SEVIRI_IR :
         rate: 1.0
   token_size : 1024
   tokenize_spacetime : False
-  max_num_targets: 131072
   forcing: True
   embed : 
     net : linear
-  embed_target_coords : 
-    net : linear
-    dim_embed : 512
-  target_readout :
-    num_layers : 2
-    num_heads : 4
-  pred_head : 
-    ens_size : 1
-    num_layers : 1
-
 
 GOES_ABI_IR :
   type : obs
@@ -50,20 +39,9 @@ GOES_ABI_IR :
         rate: 1.0
   token_size : 1024
   tokenize_spacetime : False
-  max_num_targets: 131072
   forcing: True
   embed : 
     net : linear
-  embed_target_coords : 
-    net : linear
-    dim_embed : 512
-  target_readout :
-    num_layers : 2
-    num_heads : 4
-  pred_head : 
-    ens_size : 1
-    num_layers : 1
-
 
 HIMAWARI_AHI_IR :
   type : obs
@@ -79,20 +57,9 @@ HIMAWARI_AHI_IR :
         rate: 1.0
   token_size : 1024
   tokenize_spacetime : False
-  max_num_targets: 131072
   forcing: True
   embed : 
     net : linear
-  embed_target_coords : 
-    net : linear
-    dim_embed : 512
-  target_readout :
-    num_layers : 2
-    num_heads : 4
-  pred_head : 
-    ens_size : 1
-    num_layers : 1
-
 
 GOES_ABI_VIS :
   type : obs
@@ -108,38 +75,18 @@ GOES_ABI_VIS :
         rate: 1.0
   token_size : 1024
   tokenize_spacetime : False
-  max_num_targets: 131072
   forcing: True
   embed : 
     net : linear
-  embed_target_coords : 
-    net : linear
-    dim_embed : 512
-  target_readout :
-    num_layers : 2
-    num_heads : 4
-  pred_head : 
-    ens_size : 1
-    num_layers : 1
-
 
 HIMAWARI_AHI_VIS :
   type : obs
   stream_id : 14
   filenames : ['observations-file-2015-2022-himawari8-VIS-o256-v1.zarr', 'observations-file-2022-2024-himawari9-VIS-o256-v3.zarr']
-  geoinfo_channels : ['cos_local_time', 'sin_local_time', 'cos_julian_day', 'sin_julian_day', 'zenith', 'cos_sza', 'cos_latitude', 'sin_latitude', 'cos_longitude', 'sin_longitude']
+  geoinfo_channels : ['cos_local_time', 'sin_local_time', 'cos_julian_day', 'sin_julian_day', 'zenith', 'cos_sza']
   loss_weight : 1.0
   token_size : 1024
   tokenize_spacetime : False
   forcing: True
   embed :
     net : linear
-  embed_target_coords : 
-    net : linear
-    dim_embed : 512
-  target_readout :
-    num_layers : 2
-    num_heads : 4
-  pred_head : 
-    ens_size : 1
-    num_layers : 1

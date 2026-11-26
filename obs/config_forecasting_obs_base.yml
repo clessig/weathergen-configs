@@ -90,7 +90,8 @@ norm_type: "LayerNorm"
 
 #####################################
 
-streams_directory: "./weathergen-configs/streams_obs/base/"
+# streams_directory: "./weathergen-configs/streams_obs/base/"
+streams_directory: "./weathergen-configs/streams_obs/base_geos_n320/"
 streams: ???
 
 # type of zarr_store

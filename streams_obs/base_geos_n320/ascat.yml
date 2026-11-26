@@ -1,0 +1,30 @@
+# (C) Copyright 2024 WeatherGenerator contributors.
+#
+# This software is licensed under the terms of the Apache Licence Version 2.0
+# which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
+#
+# In applying this licence, ECMWF does not waive the privileges and immunities
+# granted to it by virtue of its status as an intergovernmental organisation
+# nor does it submit to any jurisdiction.
+
+METOP_ABC_ASCAT :
+  type : obs
+  stream_id : 80
+  filenames : ['observations-ea-ofb-0001-2007-2021-metop-a-ascat-v2.zarr', 'observations-ea-ofb-0001-2013-2023-metop-b-ascat-v2.zarr', 'observations-ea-ofb-0001-2020-2023-metop-c-ascat-v2.zarr']
+  source: ['obsvalue_rawbt_138', 'obsvalue_rawbt_16', 'obsvalue_rawbt_170', 'obsvalue_rawbt_185', 'obsvalue_rawbt_224', 'obsvalue_rawbt_249', 'obsvalue_rawbt_271', 'obsvalue_rawbt_2907', 'obsvalue_rawbt_2991', 'obsvalue_rawbt_3093', 'obsvalue_rawbt_3160', 'obsvalue_rawbt_445', 'obsvalue_rawbt_5383', 'obsvalue_rawbt_63', 'obsvalue_rawbt_756', 'obsvalue_rawbt_867', 'obsvalue_rawbt_921']
+  geoinfo_channels : ['cos_local_time', 'sin_local_time', 'cos_julian_day', 'sin_julian_day', 'cos_sza', 'cos_vaa_1', 'sin_vaa_1', 'cos_vaa_2', 'sin_vaa_2', 'cos_vaa_3', 'sin_vaa_3', 'cos_via_1', 'cos_via_2', 'cos_via_3']
+  loss_weight : 1.0
+  masking_override :
+    model_input :
+      masking_strategy_config :
+        rate: 1.0
+  token_size : 512 # 256
+  forcing: True
+  embed : 
+    net : transformer
+    num_tokens : 1
+    num_heads : 2
+    dim_embed : 512
+    num_blocks : 2
+
+

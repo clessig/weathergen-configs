@@ -1,0 +1,99 @@
+# (C) Copyright 2024 WeatherGenerator contributors.
+#
+# This software is licensed under the terms of the Apache Licence Version 2.0
+# which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
+#
+# In applying this licence, ECMWF does not waive the privileges and immunities
+# granted to it by virtue of its status as an intergovernmental organisation
+# nor does it submit to any jurisdiction.
+
+METEOSAT_SEVIRI :
+  type : obs
+  stream_id : 10
+  filenames : ['observations-file-2014-2025-seviri-n320-1h-v1.zarr']
+  geoinfo_channels : ['cos_local_time', 'sin_local_time', 'cos_julian_day', 'sin_julian_day', 'zenith', 'cos_sza']
+  loss_weight : 1.0
+  location_weight : cosine_latitude
+  masking_override :
+    model_input :
+      masking_strategy: "random"
+      masking_strategy_config :
+        rate: 1.0
+  token_size : 1024
+  tokenize_spacetime : False
+  forcing: True
+  embed : 
+    net : linear
+
+METEOSAT_SEVIRI_IODC :
+  type : obs
+  stream_id : 11
+  filenames : ['observations-file-2017-2026-seviri-iodc-n320-1h-v1.zarr']
+  geoinfo_channels : ['cos_local_time', 'sin_local_time', 'cos_julian_day', 'sin_julian_day', 'zenith', 'cos_sza']
+  loss_weight : 1.0
+  location_weight : cosine_latitude
+  masking_override :
+    model_input :
+      masking_strategy: "random"
+      masking_strategy_config :
+        rate: 1.0
+  token_size : 1024
+  tokenize_spacetime : False
+  forcing: True
+  embed : 
+    net : linear
+
+GOES_ABI_EAST :
+  type : obs
+  stream_id : 12
+  filenames : ['observations-file-2017-2025-abi-goes-n320-1h-v1.zarr']
+  geoinfo_channels : ['cos_local_time', 'sin_local_time', 'cos_julian_day', 'sin_julian_day', 'zenith', 'cos_sza']
+  loss_weight : 1.0
+  location_weight : cosine_latitude
+  masking_override :
+    model_input :
+      masking_strategy: "random"
+      masking_strategy_config :
+        rate: 1.0
+  token_size : 1024
+  tokenize_spacetime : False
+  forcing: True
+  embed : 
+    net : linear
+
+GOES_ABI_WEST :
+  type : obs
+  stream_id : 12
+  filenames : ['observations-file-2018-2026-abi-goes-west-n320-1h-v1.zarr']
+  geoinfo_channels : ['cos_local_time', 'sin_local_time', 'cos_julian_day', 'sin_julian_day', 'zenith', 'cos_sza']
+  loss_weight : 1.0
+  location_weight : cosine_latitude
+  masking_override :
+    model_input :
+      masking_strategy: "random"
+      masking_strategy_config :
+        rate: 1.0
+  token_size : 1024
+  tokenize_spacetime : False
+  forcing: True
+  embed : 
+    net : linear
+
+HIMAWARI_AHI :
+  type : obs
+  stream_id : 11
+  filenames : ['observations-file-2015-2025-combined-himawari-n320-1h-v1.zarr']
+  geoinfo_channels : ['cos_local_time', 'sin_local_time', 'cos_julian_day', 'sin_julian_day','zenith', 'cos_sza']
+  loss_weight : 1.0
+  location_weight : cosine_latitude
+  masking_override :
+    model_input :
+      masking_strategy: "random"
+      masking_strategy_config :
+        rate: 1.0
+  token_size : 1024
+  tokenize_spacetime : False
+  forcing: True
+  embed : 
+    net : linear
+
